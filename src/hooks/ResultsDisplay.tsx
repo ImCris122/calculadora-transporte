@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Solución: Definimos el tipo 'Matrix' aquí mismo.
+
 type Matrix = number[][]; 
 
 interface ResultsDisplayProps {
@@ -9,7 +9,7 @@ interface ResultsDisplayProps {
 }
 
 const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ asignaciones, costoTotal }) => {
-  // ... el resto del código no cambia ...
+ 
   return (
     <div className="resultados">
       <h2>Resultados Obtenidos</h2>
@@ -37,7 +37,7 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ asignaciones, costoTota
         </table>
       </div>
       
-      <h3>Costo Total Mínimo: ${costoTotal}</h3>
+      <h3>Costo Total Mínimo: Q{costoTotal}</h3>
     </div>
   );
 };

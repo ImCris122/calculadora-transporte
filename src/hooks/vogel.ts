@@ -1,9 +1,9 @@
-// src/vogel.ts
+
 
 type MatrixNum = number[][];
 type VectorNum = number[];
 
-// Interfaz para definir la estructura de cada "paso" que guardaremos
+
 export interface VogelStep {
   descripcion: string;
   penalizacionesFila: (number | null)[];
@@ -29,7 +29,7 @@ export const resolverVogel = (
   const asignaciones: MatrixNum = Array(numOrigenes).fill(0).map(() => Array(numDestinos).fill(0));
   let costoTotal = 0;
 
-  // ¡AQUÍ LA MAGIA! Creamos un arreglo para guardar cada paso.
+ 
   const steps: VogelStep[] = [];
   let iteracionCounter = 1;
 
@@ -37,7 +37,7 @@ export const resolverVogel = (
     const penalizacionesFila: (number | null)[] = [];
     const penalizacionesColumna: (number | null)[] = [];
 
-    // --- El cálculo de penalizaciones es el mismo ---
+    
     for (let i = 0; i < numOrigenes; i++) {
         if (oferta[i] > 0) {
             const costosFilaActivos = costos[i].filter((_, j) => demanda[j] > 0);
@@ -94,25 +94,25 @@ export const resolverVogel = (
     const cantidadAsignada = Math.min(oferta[filaSeleccionada], demanda[colSeleccionada]);
     descripcionPaso += ` Se asignan ${cantidadAsignada} unidades.`;
     
-    // Guardamos el estado ANTES de modificarlo para el siguiente ciclo
+    
     steps.push({
         descripcion: descripcionPaso,
         penalizacionesFila: [...penalizacionesFila],
         penalizacionesColumna: [...penalizacionesColumna],
-        asignaciones: asignaciones.map(f => [...f]), // Copia profunda
+        asignaciones: asignaciones.map(f => [...f]), 
         oferta: [...oferta],
         demanda: [...demanda],
         iteracion: iteracionCounter,
     });
     iteracionCounter++;
 
-    // Actualizamos los valores
+    
     asignaciones[filaSeleccionada][colSeleccionada] += cantidadAsignada;
     costoTotal += cantidadAsignada * costos[filaSeleccionada][colSeleccionada];
     oferta[filaSeleccionada] -= cantidadAsignada;
     demanda[colSeleccionada] -= cantidadAsignada;
   }
 
-  // Devolvemos todo: el resultado final y el paso a paso.
+  
   return { asignaciones, costoTotal, steps };
 };

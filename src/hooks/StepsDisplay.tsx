@@ -1,4 +1,4 @@
-// src/components/StepsDisplay.tsx
+
 
 import React from 'react';
 import type { VogelStep } from './vogel';
